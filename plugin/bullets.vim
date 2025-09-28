@@ -161,7 +161,7 @@ fun! s:parse_bullet_text(line_text)
   if s:bullet_cache isnot v:null
     let l:cached = get(s:bullet_cache, a:line_text, v:null)
     if l:cached isnot v:null
-      " Return a copy so as not to break the referene
+      " Return a copy so as not to break the reference
       return copy(l:cached)
     endif
   endif
@@ -177,11 +177,11 @@ fun! s:parse_bullet_text(line_text)
   let l:roman = empty(l:bullet) && empty(l:num) ? s:match_roman_list_item(a:line_text) : {}
 
   let l:kinds = s:filter([l:bullet, l:check, l:num, l:alpha, l:roman], '!empty(v:val)')
-  
+
   if s:bullet_cache isnot v:null
     let s:bullet_cache[a:line_text] = l:kinds
   endif
-    
+
   return l:kinds
 endfun
 
