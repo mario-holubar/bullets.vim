@@ -971,7 +971,7 @@ fun! s:change_line_bullet_level(direction, lnum)
   if a:direction == 1
     if l:curr_line != [] && indent(a:lnum) == 0
       " Promoting a bullet at the highest level will delete the bullet
-      call setline(a:lnum, l:curr_line[0].text_after_bullet)
+      call setline(a:lnum, l:curr_line[-1].text_after_bullet)
       return
     else
       execute a:lnum . 'normal! <<'
